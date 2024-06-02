@@ -1,0 +1,14 @@
+{
+  "name": "webconf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "kurento-client": "^6.9.0",
+    "minimist": "1.2.0",
+    "socket.io": "^2.2.0"
+  }
+}

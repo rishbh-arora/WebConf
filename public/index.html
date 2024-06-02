@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Conferencing (Node.js, Kurento)</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      body {
+        margin: 0 0 0 0;
+        font-family: "Fira Sans", sans-serif !important;
+        color: white;
+        background-color: #131313;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      #homeTitle {
+        width: 100%;
+      }
+
+      .videoContainer {
+        float: left;
+      }
+
+      .roomSelection {
+        display: flex;
+        border-radius: 25;
+        border: 5px solid #95baf3;
+        background-color: #1a1c1e;
+        justify-content: space-between;
+        align-items: center;
+        height: 30vh;
+        padding: 3%;
+        width: 50vw;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        align-items: center;
+      }
+
+      .field {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .field-elements {
+        padding: 5%;
+        font-family: "Fira Sans", sans-serif;
+        font-size: medium;
+        color: white;
+        background-color: #27292b;
+        border-radius: 99999px;
+        border: none;
+      }
+
+      .field-elements[button] {
+        border: 3px solid #95baf3;
+      }
+
+      .roomname {
+        margin-top: 1vh;
+      }
+
+      video {
+        border-radius: 20px;
+      }
+
+      .videoContainer {
+        text-align: center;
+        font-size: 2vh;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+      }
+
+      .meetControl {
+        background-color: #1a1c1e;
+        color: white;
+        width: 10vw;
+        font-size: 1vw;
+        border: 3px solid white;
+        border-radius: 999999px;
+      }
+
+      #meetingRoom {
+        display: none;
+        padding: 3vh;
+      }
+
+      #allVideos {
+        padding: 2vw;
+      }
+
+      video {
+        margin: 1vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="roomSelection" class="roomSelection">
+      <h1 id="homeTitle">
+        Video Conferencing <br />
+        (Node.js, Kurento)
+      </h1>
+      <div class="form">
+        <div class="field">
+          <input
+            id="name"
+            type="text"
+            placeholder="Your name"
+            class="field-elements"
+          />
+        </div>
+        <div class="field roomname">
+          <input
+            id="room"
+            type="text"
+            placeholder="Room name"
+            class="field-elements"
+          />
+        </div>
+        <div class="field roomname">
+          <button id="register" class="field-elements">Join Meeting</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="meetingRoom">
+      <div class="header">
+        <button type="button" id="mute" class="meetControl">Mute</button>
+        <h1 id="room-title"></h1>
+        <button
+          id="btnRefresh"
+          type="button"
+          onclick="window.location.reload();"
+          class="meetControl"
+        >
+          Leave room
+        </button>
+      </div>
+      <div id="allVideos"></div>
+    </div>
+
+    <script src="adapter.js"></script>
+    <script src="kurento-utils.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+  </body>
+</html>
